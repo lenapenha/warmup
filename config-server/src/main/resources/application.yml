@@ -6,5 +6,6 @@ server:
     config:
       server:
         git:
-          uri: 
+          uri: https://github.com/lenapenha/warmup
+            search-paths: /config
  
