@@ -1,11 +1,10 @@
 server:
   port: 9090
   
- spring:
-  cloud:
-    config:
-      server:
+spring:
+ cloud:
+   config:
+    server:
         git:
-          uri: https://github.com/lenapenha/warmup
-            search-paths: /config
+         uri: https://github.com/lenapenha/warmup/config
  
