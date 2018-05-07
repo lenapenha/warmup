@@ -3,8 +3,7 @@ server:
   
 spring:
  cloud:
-   config:
-    server:
+    config:
+      server:
         git:
-         uri: https://github.com/lenapenha/warmup/config
- 
+          uri: https://github.com/lenapenha/warmup/config
