@@ -10,9 +10,9 @@ import javax.validation.constraints.Size;
 @Entity
 public class Authority implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 167522347606022899L;
 
-    @Id
+	@Id
     @NotNull
     @Size(min = 0, max = 50)
     private String name;
