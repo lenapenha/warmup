@@ -25,7 +25,6 @@ security:
 
 spring:
     datasource:
-        initialization-mode: always
         data: classpath:/sql/data.sql
         driver-class-name: com.mysql.jdbc.Driver
         password: 'PgT8*(D3.3DZ'
