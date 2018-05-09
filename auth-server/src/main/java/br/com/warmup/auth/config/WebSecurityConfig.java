@@ -1,6 +1,7 @@
 package br.com.warmup.auth.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -9,16 +10,17 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import br.com.warmup.auth.service.UserDetailsServiceAuth;
 
 @Configuration
 @EnableWebSecurity
 @Order(10)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
-	@Autowired
-    private UserDetailsService userDetailsService;
+
+    @Autowired
+    private UserDetailsServiceAuth userDetailsService;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -38,5 +40,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/oauth/register");
     }
-
 }

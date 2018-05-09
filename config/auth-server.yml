@@ -25,11 +25,11 @@ security:
 
 spring:
     datasource:
-        data: classpath:/data-mysql.sql
+        data: classpath:/sql/data.sql
         driver-class-name: com.mysql.jdbc.Driver
         password: 'PgT8*(D3.3DZ'
         platform: mysql
-        schema: classpath:/schema-mysql.sql
+        schema: classpath:/sql/schema.sql
         url: jdbc:mysql://localhost/oauth?createDatabaseIfNotExist=true&verifyServerCertificate=false&useSSL=false&requireSSL=false
         username: root
     jpa:

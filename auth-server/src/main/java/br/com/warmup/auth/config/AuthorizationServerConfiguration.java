@@ -19,13 +19,15 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 import br.com.warmup.auth.domain.Authorities;
 
 
+
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter{
+public class AuthorizationServerConfiguration extends
+        AuthorizationServerConfigurerAdapter {
 
-	private static PasswordEncoder encoder;
-	
-	@Value("${security.oauth2.client.client-id}")
+    private static PasswordEncoder encoder;
+
+    @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
     @Value("${security.oauth2.client.authorized-grant-types}")
