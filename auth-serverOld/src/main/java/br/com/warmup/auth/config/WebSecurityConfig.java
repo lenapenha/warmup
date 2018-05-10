@@ -16,7 +16,6 @@ import br.com.warmup.auth.service.UserDetailsServiceAuth;
 
 @Configuration
 @EnableWebSecurity
-@Order(10)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired

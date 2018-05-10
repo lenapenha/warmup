@@ -22,7 +22,8 @@ import br.com.warmup.auth.domain.Authorities;
 
 @Configuration
 @EnableAuthorizationServer
-public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
+public class AuthorizationServerConfiguration extends
+        AuthorizationServerConfigurerAdapter {
 
     private static PasswordEncoder encoder;
 
@@ -47,16 +48,21 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     DataSource dataSource;
 
-    
-    @Qualifier("authenticationManagerBean")
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Bean
     public JdbcTokenStore tokenStore() {
         return new JdbcTokenStore(dataSource);
     }
-    
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints)
+            throws Exception {
+        endpoints.authenticationManager(this.authenticationManager).tokenStore(tokenStore());
+    }
+
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.jdbc(dataSource)
@@ -68,13 +74,6 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .secret(secret)
                 .accessTokenValiditySeconds(accessTokenValiditySeconds);
     }
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints)
-            throws Exception {
-        endpoints.authenticationManager(this.authenticationManager).tokenStore(tokenStore());
-    }
-    
 
     @Bean
     public PasswordEncoder passwordEncoder() {
