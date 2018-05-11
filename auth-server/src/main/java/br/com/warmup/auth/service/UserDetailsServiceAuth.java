@@ -18,9 +18,9 @@ import br.com.warmup.auth.model.User;
 import br.com.warmup.auth.repository.UserRepository;
 
 @Service
-@Transactional
 public class UserDetailsServiceAuth implements UserDetailsService {
 	
+	@Autowired
 	UserRepository userRepository;
 
 	@Override
@@ -28,11 +28,6 @@ public class UserDetailsServiceAuth implements UserDetailsService {
 		return userRepository.findByUsername(username)
 				.map(user -> new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getGrantedAuthorities(user)))
 				.orElseThrow(() -> new UsernameNotFoundException("User "+username+" Not found"));
-	}
-	
-	@Autowired
-	public void setUserRepository(UserRepository userRepository) {
-		this.userRepository = userRepository;
 	}
 	
 	private Collection<GrantedAuthority> getGrantedAuthorities(User user){

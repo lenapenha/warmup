@@ -4,3 +4,18 @@ spring:
   cloud:
     config:
       uri: http://localhost:9090
+      
+    
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      password: 'PgT8*(D3.3DZ'
+      platform: mysql
+      url: jdbc:mysql://localhost/oauth?createDatabaseIfNotExist=true&verifyServerCertificate=false&useSSL=false&requireSSL=false
+      username: root
+  jpa:
+      database-platform: org.hibernate.dialect.MySQLDialect
+      generate-ddl: false
+      hibernate:
+          ddl-auto: none
+      show-sql: true
+      

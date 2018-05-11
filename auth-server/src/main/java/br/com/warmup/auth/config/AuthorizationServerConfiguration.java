@@ -24,16 +24,14 @@ import br.com.warmup.auth.domain.Authorities;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-    private static PasswordEncoder encoder;
-
     @Value("${security.oauth2.client.client-id}")
     private String clientId;
 
     @Value("${security.oauth2.client.authorized-grant-types}")
     private String[] authorizedGrantTypes;
 
-    @Value("${security.oauth2.client.resource-ids}")
-    private String resourceIds;
+//    @Value("${security.oauth2.client.resource-ids}")
+//    private String resourceIds;
 
     @Value("${security.oauth2.client.scope}")
     private String[] scopes;
@@ -47,9 +45,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
     @Autowired
     DataSource dataSource;
 
-    
-    @Qualifier("authenticationManagerBean")
     @Autowired
+    @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
 
     @Bean
@@ -63,7 +60,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
                 .withClient(clientId)
                 .authorizedGrantTypes(authorizedGrantTypes)
                 .authorities(Authorities.names())
-                .resourceIds(resourceIds)
+//                .resourceIds(resourceIds)
                 .scopes(scopes)
                 .secret(secret)
                 .accessTokenValiditySeconds(accessTokenValiditySeconds);
@@ -74,13 +71,5 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
             throws Exception {
         endpoints.authenticationManager(this.authenticationManager).tokenStore(tokenStore());
     }
-    
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        if (encoder == null) {
-            encoder = new BCryptPasswordEncoder();
-        }
-        return encoder;
-    }
 }
