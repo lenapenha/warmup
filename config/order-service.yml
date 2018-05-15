@@ -14,19 +14,17 @@ eureka:
     wait-time-in-ms-when-sync-empty: 3000
 
 spring:
-    batch: 
-      initialize-schema: always
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: 'PgT8*(D3.3DZ'
         platform: mysql
-        url: jdbc:mysql://localhost/delivery-order?verifyServerCertificate=false&useSSL=false&requireSSL=false
+        url: jdbc:mysql://localhost/delivery-order?createDatabaseIfNotExist=true&verifyServerCertificate=false&useSSL=false&requireSSL=false
         username: root
     jpa:
         database-platform: org.hibernate.dialect.MySQLDialect
         generate-ddl: false
         hibernate:
-            ddl-auto: createspring.batch.initialize-schema=always
+            ddl-auto: create
         show-sql: true
     
 
