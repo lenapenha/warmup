@@ -14,6 +14,8 @@ eureka:
     wait-time-in-ms-when-sync-empty: 3000
 
 spring:
+    batch: 
+      initialize-schema: always
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: 'PgT8*(D3.3DZ'
@@ -24,8 +26,9 @@ spring:
         database-platform: org.hibernate.dialect.MySQLDialect
         generate-ddl: false
         hibernate:
-            ddl-auto: create
+            ddl-auto: createspring.batch.initialize-schema=always
         show-sql: true
+    
 
 authserver:
   hostname: http://localhost:9092
