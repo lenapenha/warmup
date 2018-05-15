@@ -16,7 +16,7 @@ import com.coderef.delivery.service.UserDetailsService;
 
 @Configuration
 @EnableWebSecurity
-@Order(SecurityProperties.ACCESS_OVERRIDE_ORDER)
+@Order(10)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
