@@ -19,3 +19,4 @@ zuul:
     warmupnew:
       path: /warmupnew/**
       serviceId: warmupnew
+      url: "http://localhost:7777/"
