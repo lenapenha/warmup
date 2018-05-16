@@ -7,9 +7,8 @@ eureka:
     port: 9091
   client:
     registerWithEureka: true
-    fetchRegistry: true
-    registry-fetch-interval-seconds: 10
-    serviceUrl:
+    fetchRegistry: false
+    serviceUrl: 
       defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
   server:
     wait-time-in-ms-when-sync-empty: 3000
@@ -20,9 +19,3 @@ zuul:
     WarmUp:
       path: /WarmUp/**
       serviceId: WarmUp
-control: 
-  access:
-    eureka:
-      credentials:
-        user: eureka
-        pass: eureka

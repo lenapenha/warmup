@@ -1,5 +1,7 @@
 package br.com.warmup.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +10,9 @@ import javax.persistence.Id;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Livro {
+public class Livro implements Serializable{
+
+	private static final long serialVersionUID = 7973878211728498396L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,7 @@ public class Livro {
 	
 	private String titulo;
 	private String preco;
+	private String descricao;
 	
 	private Livro() {
 		super();
@@ -50,6 +55,15 @@ public class Livro {
 	public String getPreco() {
 		return preco;
 	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
 	
 	
 	
