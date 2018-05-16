@@ -2,6 +2,7 @@ package br.com.warmup.web;
 
 import java.util.Optional;
 
+import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +32,9 @@ public class LivroController {
 	
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Livro> buscarPeloCodigo(@PathVariable Long codigo) {
-		Optional<Livro> livro = livroService.buscaPorCodigo(codigo);
-		return livro.isPresent() ? ResponseEntity.ok(livro.get()) : ResponseEntity.notFound().build();
+		return Optional.ofNullable(livroService.buscaPorCodigo(codigo))
+				.map(ResponseEntity::ok)
+				.orElseGet(() -> ResponseEntity.notFound().build());
 	}
 	
 

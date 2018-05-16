@@ -18,8 +18,8 @@ public class LivroService {
 		return livroRepository.save(Livro.of(livro));
 	}
 
-	public Optional<Livro> buscaPorCodigo(Long codigo) {
-		return livroRepository.findById(codigo);
+	public Livro buscaPorCodigo(Long codigo) {
+		return livroRepository.findOne(codigo);
 	}
 
 }

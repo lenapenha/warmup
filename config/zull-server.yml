@@ -16,6 +16,6 @@ eureka:
 
 zuul:
   routes:
-    WarmUp:
-      path: /WarmUp/**
-      serviceId: WarmUp
+    warmupnew:
+      path: /warmupnew/**
+      serviceId: warmupnew
