@@ -17,9 +17,9 @@ eureka:
 
 zuul:
   routes:
-    order-service:
-      path: /order-service/**
-      serviceId: ORDER-SERVICE
+    WarmUp:
+      path: /WarmUp/**
+      serviceId: WarmUp
 control: 
   access:
     eureka:
