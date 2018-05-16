@@ -1,0 +1,28 @@
+server:
+  port: 9094
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 9091
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    registry-fetch-interval-seconds: 10
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+
+
+zuul:
+  routes:
+    order-service:
+      path: /order-service/**
+      serviceId: ORDER-SERVICE
+control: 
+  access:
+    eureka:
+      credentials:
+        user: eureka
+        pass: eureka
