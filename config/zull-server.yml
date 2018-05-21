@@ -13,9 +13,19 @@ eureka:
   server:
     wait-time-in-ms-when-sync-empty: 3000
 
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
 
 zuul:
   routes:
     warmupnew:
       path: /warmupnew/**
       serviceId: warmupnew
+    oauth-server:
+      path: /oauth-server/**
+      serviceId: oauth-server
