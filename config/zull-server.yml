@@ -29,3 +29,10 @@ zuul:
     oauth-server:
       path: /oauth-server/**
       serviceId: oauth-server
+      
+authserver:
+  hostname: http://localhost:9092
+security:
+  oauth2:
+    resource:
+      userInfoUri: ${authserver.hostname}/user
