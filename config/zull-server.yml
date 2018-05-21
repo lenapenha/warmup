@@ -1,5 +1,8 @@
 server:
   port: 9094
+  
+security:
+  sessions: NEVER
 
 eureka:
   instance:
@@ -27,12 +30,6 @@ zuul:
       path: /warmupnew/**
       serviceId: warmupnew
     oauth-server:
-      path: /oauth-server/**
+      path: /uaa/**
       serviceId: oauth-server
       
-authserver:
-  hostname: http://localhost:9092
-security:
-  oauth2:
-    resource:
-      userInfoUri: ${authserver.hostname}/user

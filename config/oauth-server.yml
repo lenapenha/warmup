@@ -1,10 +1,7 @@
 server:
   port: 9092
+  context-path: /uaa
 
-security:
-  user:
-    password: password
-    
 eureka:
   instance:
     hostname: localhost

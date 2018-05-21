@@ -15,6 +15,7 @@ eureka:
     
 authserver:
   hostname: http://localhost:9092
+  
 security:
   oauth2:
     resource:
