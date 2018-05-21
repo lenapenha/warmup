@@ -1,6 +1,10 @@
 server:
   port: 9092
 
+security:
+  user:
+    password: password
+    
 eureka:
   instance:
     hostname: localhost
