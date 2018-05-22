@@ -31,8 +31,8 @@ zuul:
       url: http://localhost:9999
     oauth-server:
       path: /oauth-server/**
+      sensitiveHeaders: Authorization
       url: http://localhost:9092
-      sensitiveHeaders: Authorization 
       
 authserver:
   hostname: http://localhost:9092
