@@ -30,7 +30,7 @@ zuul:
       path: /warmupnew/**
       serviceId: warmupnew
     oauth-server:
-      path: /uaa/**
+      path: /oauth-server/**
       serviceId: oauth-server
       
 authserver:

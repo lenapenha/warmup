@@ -1,6 +1,5 @@
 server:
   port: 9092
-  context-path: /uaa
 
 eureka:
   instance:
