@@ -34,18 +34,8 @@ oauthserver:
   hostname: http://localhost:9092
   
 security:
-  user:
-     password: none
   oauth2:
     resource:
       userInfoUri: ${oauthserver.hostname}/user
-    client:
-       accessTokenUri: ${oauthserver.hostname}/oauth/token
-       userAuthorizationUri: ${oauthserver.hostname}/oauth/authorize
-       clientId: react
-       clientSecret: 73@ct
-  
      
-
-   
       
