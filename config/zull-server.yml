@@ -1,9 +1,6 @@
 server:
   port: 9094
   
-security:
-  sessions: NEVER
-
 eureka:
   instance:
     hostname: localhost
@@ -33,10 +30,21 @@ zuul:
       path: /oauth-server/**
       url: http://localhost:9092
       
-authserver:
+oauthserver: 
   hostname: http://localhost:9092
+  
 security:
   oauth2:
     resource:
-      userInfoUri: ${authserver.hostname}/user
+      userInfoUri: ${oauthserver.hostname}/user
+      
+security:
+   user:
+     password: none
+   oauth2:
+     client:
+       accessTokenUri: ${oauthserver.hostname}/oauth/token
+       userAuthorizationUri: ${oauthserver.hostname}/oauth/authorize
+       clientId: react
+       clientSecret: 73@ct
       
