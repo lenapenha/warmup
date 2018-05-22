@@ -28,10 +28,10 @@ zuul:
   routes:
     warmupnew:
       path: /warmupnew/**
-      serviceId: warmupnew
+      url: http://localhost:9999
     oauth-server:
       path: /oauth-server/**
-      serviceId: oauth-server
+      url: http://localhost:9092
       
 authserver:
   hostname: http://localhost:9092
