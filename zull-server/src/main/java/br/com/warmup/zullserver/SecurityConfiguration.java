@@ -3,6 +3,7 @@ package br.com.warmup.zullserver;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configurers.ResourceServerSecurityConfigurer;
@@ -10,6 +11,8 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Res
 @Configuration
 @EnableResourceServer
 public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
+	
+	private final static String resourceId = "resources";
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
@@ -24,12 +27,15 @@ public class SecurityConfiguration extends ResourceServerConfigurerAdapter {
 		.antMatchers(HttpMethod.POST, "/**").access("#oauth2.hasScope('write')")
 		.antMatchers(HttpMethod.PUT, "/**").access("#oauth2.hasScope('write')")
 		.antMatchers(HttpMethod.PATCH, "/**").access("#oauth2.hasScope('write')")
-		.antMatchers(HttpMethod.DELETE, "/**").access("#oauth2.hasScope('write')");
+		.antMatchers(HttpMethod.DELETE, "/**").access("#oauth2.hasScope('write')")
+		.and()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+        .csrf().disable();
 	}
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-		resources.stateless(true);
+		resources.resourceId(resourceId);
 	}
 
 
